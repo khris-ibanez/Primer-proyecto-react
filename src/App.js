@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [dig, setDig] = useState([]);
+
+  // useEffect(()=>{
+  //   async function getdig(){
+  //     const res=await fetch('https://digimon-api.vercel.app/api/digimon')
+  //     const json=await res.json()
+  //     setDig(json)
+  //   }
+  //   getdig()
+  // },[])
+
+  useEffect(() => {
+    fetch("https://digimon-api.vercel.app/api/digimon")
+      .then((res) => res.json())
+      .catch(error => console.error(error))
+      .then((data) => setDig(data));
+      alert("este proyecto fue realizado con REACT JS :D")
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Imagen</th>
+          <th>LVL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {dig.map((digi, indix) => (
+          <tr key={indix}>
+            <td>{digi.name}</td>
+            <td>
+              <img src={digi.img} alt="imagen Digimon buscada"></img>
+            </td>
+            <td>{digi.level}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 

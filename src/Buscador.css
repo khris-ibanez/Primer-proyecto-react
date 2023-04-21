@@ -1,0 +1,14 @@
+div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;    
+}
+div input{
+    width: 200px;
+
+}
+div img{
+    width: 80px;
+    height: auto;
+}
