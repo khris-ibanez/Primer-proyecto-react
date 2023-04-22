@@ -8,7 +8,9 @@ import {Buscador} from './Buscador'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <nav>Soy un Nav</nav>
+    <nav>
+      <a href={"inicio"}>inicio</a>
+    </nav>
     <Buscador/>
     <App />
   </React.StrictMode>
